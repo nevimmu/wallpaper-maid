@@ -18,9 +18,12 @@ def rofi(options):
 	else:
 		return None
 
-def set_wallpaper(wallpaper_path):
+def set_wallpaper(wallpaper_path, monitor=None):
 	'''Set the wallpaper using swww'''
-	subprocess.run(['swww', 'img', wallpaper_path])
+	if monitor:
+		subprocess.run(['swww', 'img', wallpaper_path, '-o', monitor])
+	else:
+		subprocess.run(['swww', 'img', wallpaper_path])
 
 def setup(db):
 	'''Set the monitors names'''
