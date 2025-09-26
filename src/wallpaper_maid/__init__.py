@@ -1,0 +1,1 @@
+from .wallpaper_maid import main

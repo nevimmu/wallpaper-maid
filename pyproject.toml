@@ -1,0 +1,28 @@
+[build-system]
+requires = ['setuptools>=64.0.0']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'wallpaper-maid'
+version = '0.0.1'
+authors = [
+	{ name='Nevimmu', email='nevimmu@gmail.com' },
+]
+description = 'Wallpaper-amid help with your wallpapers'
+readme = 'README.md'
+license = { file = 'LICENSE' }
+requires-python = '>=3.7'
+dependencies = [
+	'argcomplete>=3.6.2',
+	'questionary>=2.1.0',
+]
+
+[project.urls]
+'Homepage' = 'https://github.com/nevimmu/jams'
+'Bug Tracker' = 'https://github.com/nevimmu/jams/issues'
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+wallpaper-maid = 'wallpaper_maid:main'
