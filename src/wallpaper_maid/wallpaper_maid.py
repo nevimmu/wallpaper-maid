@@ -1,10 +1,9 @@
 import os
 import sys
 import argparse
-import questionary
 from .settings import CONF_DIR, __version__, DEFAULT_WALLPAPERS_DIR
 from .db_helper import DbHelper
-from .utils import rofi, set_wallpaper
+from .utils import rofi, set_wallpaper, setup
 
 import glob
 
