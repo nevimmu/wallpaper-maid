@@ -1,0 +1,51 @@
+configuration {
+	font: "CartographCF Nerd Font 20";
+}
+
+* {
+	background: transparent;
+	foreground: white;
+}
+
+window {
+	width: 80%;
+	background-color: rgba(0, 0, 0, 0.27);
+	border: 0px;
+	location: south;
+	anchor: south;
+	border-radius: 20px 20px 0px 0px;
+}
+
+listview {
+	spacing: 0px;
+	scrollbar: false;
+	layout: horizontal;
+	
+	background-color: transparent;
+}
+
+element {
+	orientation: vertical;
+	background-color: transparent;
+}
+
+element alternate.normal,
+element selected.normal {
+	background-color: transparent;
+	text-color: white;
+}
+
+element selected.normal {
+	background-color: rgba(185, 185, 185, 0.27);
+	text-color: white;
+}
+
+element-icon {
+	size: 300px;
+	expand: true;
+	background-color: transparent;
+}
+
+element-text {
+	horizontal-align: 0.5;
+}

@@ -1,13 +1,16 @@
+import os
 import subprocess
 import json
 import questionary
+from .settings import DEFAULT_THEME_PATH, THEME_PATH
 
 def rofi(options):
 	'''Display rofi menu with options and return the user choice'''
 	options_str = '\n'.join(options)
 
+
 	result = subprocess.run(
-		['rofi', '-dmenu', '-p', 'Select a wallpaper', '-i', '-show-icons'],
+		['rofi', '-dmenu', '-p', 'Select a wallpaper', '-i', '-show-icons', '-config', THEME_PATH],
 		input=options_str,
 		text=True,
 		capture_output=True
