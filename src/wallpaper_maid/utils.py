@@ -21,12 +21,18 @@ def rofi(options):
 	else:
 		return None
 
-def set_wallpaper(wallpaper_path, monitor=None):
+def set_wallpaper(wallpaper_path, fps, monitor=None):
 	'''Set the wallpaper using swww'''
+	command = [
+		'swww', 'img', wallpaper_path,
+		'--transition-type', 'grow',
+		'--transition-fps', str(fps)
+		]
+
 	if monitor:
-		subprocess.run(['swww', 'img', wallpaper_path, '-o', monitor])
+		subprocess.run(command + ['-o', monitor])
 	else:
-		subprocess.run(['swww', 'img', wallpaper_path])
+		subprocess.run(command)
 
 def setup(db):
 	'''Set the monitors names'''
@@ -39,9 +45,11 @@ def setup(db):
 
 	monitors = {}
 	for m in monitors_json:
-		print(m['name'])
-		suffix = questionary.text(f'Choose monitor suffix for {m["name"]}').ask()
-		monitors[m['name']] = suffix
+		suffix = questionary.text(f'Choose monitor suffix for {m['name']}').ask()
+		monitors[m['name']] = {
+			'suffix': suffix,
+			'fps': int(m['refreshRate'])
+		}
 	
 	db.set('screens', monitors)
 	print('Monitors set!')

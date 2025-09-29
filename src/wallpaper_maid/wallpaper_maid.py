@@ -31,8 +31,8 @@ def wallpaper_maid(db):
 	wallpapers_path = Path(DEFAULT_WALLPAPERS_DIR).rglob('*')
 
 	suffix = []
-	for _, _suffix in screens.items():
-		suffix.append(f'-{_suffix}')
+	for _, _info in screens.items():
+		suffix.append(f'-{_info['suffix']}')
 	
 	wallpapers_list = []
 	for file in wallpapers_path:
@@ -62,15 +62,16 @@ def wallpaper_maid(db):
 
 	chosen_wallpaper = next((wp for wp in wallpapers_list if wp['display_name'] == wallpaper_choice), None)
 	if chosen_wallpaper['main']:
-		'''If the chosen wallpaper is a main wallpaper, set wallpapers for all screens'''
-		for screen, suffix in screens.items():
-			suffixed_name = f'{chosen_wallpaper['display_name']}-{suffix}'
+		# If the chosen wallpaper is a main wallpaper, set wallpapers for all screens
+		for screen, info in screens.items():
+			suffixed_name = f'{chosen_wallpaper['display_name']}-{info['suffix']}'
 			suffixed_wallpaper = next((wp for wp in wallpapers_list if wp['name'] == suffixed_name), None)
 			if suffixed_wallpaper:
-				print(f'Setting wallpaper for {screen}: {suffixed_wallpaper['path']}')
-				set_wallpaper(suffixed_wallpaper['path'], screen)
+				set_wallpaper(suffixed_wallpaper['path'], info['fps'], screen)
 	else:
-		set_wallpaper(chosen_wallpaper['path'])
+		# Else get teh highest FPS value from the monitors
+		max_fps = max(screen['fps'] for screen in screens.values())
+		set_wallpaper(chosen_wallpaper['path'], max_fps)
 
 def main():
 	os.makedirs(CONF_DIR, exist_ok=True)
