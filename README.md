@@ -1,6 +1,6 @@
 # Wallpaper Maid
 
-Script to set your wallpaper using swww on Hyprland with the ability to set a different wallpaper for each monitor
+A script to set your wallpaper using **rofi** and **swww** on **Hyprland**, with support for different wallpapers on each monitor.
 
 ## Installation
 
@@ -13,8 +13,14 @@ wallpaper-maid -s # To setup the tool
 ```
 
 ## How to use
-Wallpaper Maid will look in ~/Pictures/Wallpapers, you can then use the command `wallpaper-maid` to choose your wallpaper
+Wallpaper Maid will look for wallpapers in `~/Pictures/Wallpapers`. Run the following command to choose your wallpaper:  
+`wallpaper-maid`
 
 > [!IMPORTANT]
-> When using the option to set a different wallpaper on each monitor, make sure to name your wallpapers with the suffix you game to each monitor. For example:  
-> wallpaper-main.png, wallpaper-right.png, wallpaper-left.png
+> When using the option to set a different wallpaper on each monitor, make sure to name your wallpapers according to the monitor suffix. For example:
+> `wallpaper-main.png`, `wallpaper-right.png`, `wallpaper-left.png`
+
+### Rofi theme
+To use a custom theme, create or edit a theme file at:
+`~/.config/wallpaper-maid/theme.rasi`
+Rofi will automatically use this file when you run the script.
