@@ -28,7 +28,24 @@ def parse_args(args, db):
 
 def wallpaper_maid(db):
 	screens = db.get('screens')
-	wallpapers_path = Path(DEFAULT_WALLPAPERS_DIR).rglob('*')
+	extensions = [
+		'.jpeg',
+		'.png',
+		'.gif',
+		'.pnm',
+		'.tga',
+		'.tiff',
+		'.webp',
+		'.bmp',
+		'.farbfeld',
+		'.svg',
+	]
+
+	# Select all files path in the wallpaper dir with the correct extension
+	wallpapers_path = [
+		p for p in Path(DEFAULT_WALLPAPERS_DIR).glob('*')
+		if p.is_file() and p.suffix.lower() in extensions
+	]
 
 	suffix = []
 	for _, _info in screens.items():
