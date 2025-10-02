@@ -8,7 +8,7 @@ version = '0.3.0'
 authors = [
 	{ name='Nevimmu', email='nevimmu@gmail.com' },
 ]
-description = 'Wallpaper-amid help with your wallpapers'
+description = 'Wallpaper-maid help with your wallpapers'
 readme = 'README.md'
 license = { file = 'LICENSE' }
 requires-python = '>=3.7'
