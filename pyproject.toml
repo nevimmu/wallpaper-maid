@@ -18,8 +18,8 @@ dependencies = [
 ]
 
 [project.urls]
-'Homepage' = 'https://github.com/nevimmu/jams'
-'Bug Tracker' = 'https://github.com/nevimmu/jams/issues'
+'Homepage' = 'https://github.com/nevimmu/wallpaper-maid'
+'Bug Tracker' = 'https://github.com/nevimmu/wallpaper-maid/issues'
 
 [tool.setuptools.packages.find]
 where = ["src"]
