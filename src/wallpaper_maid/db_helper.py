@@ -14,7 +14,7 @@ class DbHelper():
 
 	def create_config(self):
 		config = {
-			'wallpapers_folder': '',
+			'wallpapers_dir': '',
 			'screens': {},
 		}
 

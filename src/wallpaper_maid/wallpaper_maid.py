@@ -2,7 +2,7 @@ import os
 import sys
 import argparse
 from pathlib import Path
-from .settings import CONF_DIR, __version__, DEFAULT_WALLPAPERS_DIR
+from .settings import CONF_DIR, __version__
 from .db_helper import DbHelper
 from .utils import rofi, set_wallpaper, setup
 
@@ -28,6 +28,8 @@ def parse_args(args, db):
 
 def wallpaper_maid(db):
 	screens = db.get('screens')
+	wallpapers_dir = db.get('wallpapers_dir')
+	print(wallpapers_dir)
 	extensions = [
 		'.jpeg',
 		'.png',
@@ -43,7 +45,7 @@ def wallpaper_maid(db):
 
 	# Select all files path in the wallpaper dir with the correct extension
 	wallpapers_path = [
-		p for p in Path(DEFAULT_WALLPAPERS_DIR).glob('*')
+		p for p in Path(wallpapers_dir).glob('*')
 		if p.is_file() and p.suffix.lower() in extensions
 	]
 

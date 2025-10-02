@@ -1,8 +1,7 @@
-import os
 import subprocess
 import json
 import questionary
-from .settings import DEFAULT_THEME_PATH, THEME_PATH
+from .settings import THEME_PATH, DEFAULT_WALLPAPERS_DIR
 
 def rofi(options):
 	'''Display rofi menu with options and return the user choice'''
@@ -41,8 +40,13 @@ def setup(db):
 		capture_output=True,
 	)
 
-	monitors_json = json.loads(hypr_monitors.stdout)
+	wallpapers_dir = questionary.path(
+		message='Path to wallpaper folder', 
+		only_directories=True,
+		default=DEFAULT_WALLPAPERS_DIR
+	).ask()
 
+	monitors_json = json.loads(hypr_monitors.stdout)
 	monitors = {}
 	for m in monitors_json:
 		suffix = questionary.text(f'Choose monitor suffix for {m['name']}').ask()
@@ -51,5 +55,6 @@ def setup(db):
 			'fps': int(m['refreshRate'])
 		}
 	
+	db.set('wallpapers_dir', wallpapers_dir)
 	db.set('screens', monitors)
 	print('Monitors set!')
