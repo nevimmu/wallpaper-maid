@@ -67,6 +67,7 @@
             python3Packages.setuptools
             python3Packages.argcomplete
             python3Packages.questionary
+            commitizen
             rofi
             swww
           ];
