@@ -165,9 +165,6 @@
             config = mkIf cfg.enable {
               home.packages = [ cfg.package ];
 
-              # Create the wallpapers directory if it doesn't exist
-              home.file."${removePrefix config.home.homeDirectory cfg.wallpapersDirectory}/.keep".text = "";
-
               # Install custom rofi theme if enabled
               xdg.configFile."wallpaper-maid/theme.rasi" = mkIf cfg.theme.enable {
                 text = ''
